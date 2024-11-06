@@ -28,9 +28,7 @@ public class MyTestFactory {
 
         // Set up JUnit launcher and discovery request
         Launcher launcher = LauncherFactory.create();
-        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
-                .selectors(DiscoverySelectors.selectClass(MyTestFactory.class))
-                .build();
+        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request().selectors(DiscoverySelectors.selectClass(MyTestFactory.class)).build();
 
         // Set up a listener to capture the test results
         SummaryGeneratingListener listener = new SummaryGeneratingListener();
