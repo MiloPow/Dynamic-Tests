@@ -30,6 +30,14 @@
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- JUnit Platform Launcher for executing tests programmatically -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.7.1</version> <!-- or the version you are using -->
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
