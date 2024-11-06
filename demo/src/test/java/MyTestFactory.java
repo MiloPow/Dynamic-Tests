@@ -15,15 +15,28 @@ public class MyTestFactory {
         
         Scanner scan = new Scanner(System.in);
 
-        // System.out.println("Press enter");
-
-        // scan.nextLine();
-
         List<DynamicTest> myTests = exampleTestFactory();
 
         for(DynamicTest test : myTests){
 
+
+            System.out.print("Test display name:");
+
             System.out.println(test.getDisplayName());
+
+            try{
+
+                test.getExecutable().execute();
+                
+                System.out.println("Test Case passed!");
+
+            } catch(Throwable t){
+
+                System.out.println("Test Case Failed: " + t);
+
+            }
+
+            
 
             // Class<?> c = test.getClass();
 
@@ -39,7 +52,7 @@ public class MyTestFactory {
     @TestFactory
     public static List<DynamicTest> exampleTestFactory() {
 	
-        return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(4, 2 * 2)), dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
+        return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
     }
     
 }
