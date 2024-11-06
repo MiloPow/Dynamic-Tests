@@ -8,7 +8,7 @@ import javax.tools.JavaCompiler;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic Tests\\demo\\src\\test\\java\\MyTestFactory.java";
+        String filePath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\Dynamic-Tests\\demo\\src\\test\\java\\MyTestFactory.java";
 
         boolean compilationResult = compileFile(filePath);
 
@@ -24,9 +24,9 @@ public class Main {
         if (compiler == null) return false;
 
         // Define the classpath to include dependencies, particularly JUnit
-        String classpath = "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
+        String classpath = "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
 
         // Pass classpath and file to compile
         int compilationResult = compiler.run(null, null, null, "-classpath", classpath, filePath);
@@ -35,13 +35,13 @@ public class Main {
     }
 
     public static void runFile(String className) {
-        String classpath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic Tests\\demo\\src\\test\\java" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
+        String classpath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic Tests\\demo\\src\\test\\java" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
 
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-classpath", classpath, className);
-        processBuilder.directory(new File("C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic Tests\\demo\\src\\test\\java"));
+        processBuilder.directory(new File("C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\Dynamic-Tests\\demo\\src\\test\\java\\MyTestFactory.java"));
 
         try {
             Process p = processBuilder.start();
