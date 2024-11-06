@@ -27,46 +27,46 @@ public class MyTestFactory {
 
         //Execute DynamicTests and show results
 
-        List<DynamicTest> myTests = exampleTestFactory();
+        // List<DynamicTest> myTests = exampleTestFactory();
 
-        for(DynamicTest test : myTests){
+        // for(DynamicTest test : myTests){
 
 
-            System.out.print("Test display name:");
+        //     System.out.print("Test display name:");
 
-            System.out.println(test.getDisplayName());
+        //     System.out.println(test.getDisplayName());
 
-            try{
+        //     try{
 
-                test.getExecutable().execute();
+        //         test.getExecutable().execute();
                 
-                System.out.println("Test Case passed!");
+        //         System.out.println("Test Case passed!");
 
-                Class<?> c = test.getClass();
+        //         Class<?> c = test.getClass();
 
-                Calculator calc = new Calculator();
+        //         Calculator calc = new Calculator();
 
-                System.out.println("Class name: " + c.getName());
+        //         System.out.println("Class name: " + c.getName());
 
-            } catch(Throwable t){
+        //     } catch(Throwable t){
 
-                System.out.println("Test Case Failed: " + t);
+        //         System.out.println("Test Case Failed: " + t);
 
-            }
-
-            
+        //     }
 
             
 
-        }
+            
 
-        System.out.println("Tests ran! Returning tests...");
+        // }
+
+        // System.out.println("Tests ran! Returning tests...");
     }
 
     @TestFactory
     public static List<DynamicTest> exampleTestFactory() {
 
-        DynamicTest test = dynamicTest(null, null);
+        DynamicTest test = dynamicTest("Dynamic Test", () -> assertEquals(4, 2 * 2));
 	
         return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
     }
@@ -149,9 +149,11 @@ public class MyTestFactory {
 
         clr();
 
-        System.out.println("Enter the name of the Assigment Spec you wish to load: ");
+        System.out.print("Enter the name of the Assigment Spec you wish to load: ");
 
         aSpec.setName(scan.nextLine());
+
+        FileManager.setFilePath(aSpec.getName());
 
         if(fileManager.loadASpecFromFile(aSpec))
             System.out.println("File loaded successfully!\n\n");
