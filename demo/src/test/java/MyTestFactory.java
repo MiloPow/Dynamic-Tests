@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -235,6 +236,214 @@ public class MyTestFactory {
             }
 
         }
+
+    }
+
+    ClassPresenceTC createCPTest(Scanner scan){
+
+        clr();
+
+        System.out.println("Enter the name of the class you wish to test for: ");
+
+        String className = scan.nextLine();
+
+        ClassPresenceTC cpTestCase = new ClassPresenceTC(className);
+
+        return cpTestCase;
+
+        // DynamicTest test = dynamicTest("Class presence check for: " + className, () -> assertEquals(scan, className));
+
+        //Since we dont know what values to compare at compile time. Dynamic tests must be created at run time
+
+        //Dynamic tests must be created and executed at run time based on test case objects
+
+    }
+
+    MethodPresenceTC createMPTest(Scanner scan){
+
+        clr();
+
+        System.out.print("Enter the name of the class that the method belongs to: ");
+
+        String className = scan.nextLine();
+
+        System.out.print("Enter the name of the method: ");
+
+        String methodName = scan.nextLine();
+
+        //Display menu and create loop for parameters
+
+        ArrayList<String> parameters = getMPParameters(scan);
+
+        MethodPresenceTC mpTestCase = new MethodPresenceTC(className, methodName, parameters);
+
+        return mpTestCase;
+
+    }
+
+    MethodValueTC createMVTest(Scanner scan){
+
+        clr();
+
+        System.out.print("Enter the name of the class that the method belongs to: ");
+
+        String className = scan.nextLine();
+
+        System.out.print("Enter the name of the method: ");
+
+        String methodName = scan.nextLine();
+
+        //Display menu and get parameters
+
+        ArrayList<String> parameters = getMVParameters(scan);
+
+        Object expectedValue = getMVReturnValue(scan);
+
+        MethodValueTC mvTestCase = new MethodValueTC(className, methodName, parameters, expectedValue);
+
+        return mvTestCase;
+
+    }
+
+    public static ArrayList<String> getMPParameters(Scanner scan){
+        
+        int choice = 0;
+        
+        //Create string array for parameters
+
+        ArrayList<String> parameters = new ArrayList<String>();
+
+        while(choice != 4){
+
+            clr();
+
+            System.out.println("1. Add parameter of type int");
+            System.out.println("2. Add parameter of type String");
+            System.out.println("3. Add parameter of type Boolean");
+            System.out.println("4. Complete parameters");
+
+            System.out.print("\nEnter selection: ");
+
+            choice = Integer.parseInt(scan.nextLine());
+
+            if(choice == 1){
+
+                parameters.add("int");
+
+            }
+            else if(choice == 2){
+
+                parameters.add("String");
+
+            }
+            else if(choice == 3){
+
+                parameters.add("Boolean");
+
+            }
+
+        }
+
+        return parameters;
+
+    }
+
+    public static ArrayList<String> getMVParameters(Scanner scan){
+
+        int choice = 0;
+        
+        //Create string array for parameters
+
+        ArrayList<String> parameters = new ArrayList<String>();
+
+        while(choice != 4){
+
+            clr();
+
+            System.out.println("1. Add parameter of type int");
+            System.out.println("2. Add parameter of type String");
+            System.out.println("3. Add parameter of type Boolean");
+            System.out.println("4. Complete parameters");
+
+            System.out.print("\nEnter selection: ");
+
+            choice = Integer.parseInt(scan.nextLine());
+
+            if(choice == 1){
+
+                parameters.add("int");
+
+                System.out.print("\nEnter int value for test parameter: ");
+
+                parameters.add(scan.nextLine());
+
+            }
+            else if(choice == 2){
+
+                parameters.add("String");
+
+                System.out.print("\nEnter String value for test parameter: ");
+
+                parameters.add(scan.nextLine());
+
+            }
+            else if(choice == 3){
+
+                parameters.add("Boolean");
+
+                System.out.print("\nEnter Boolean value for test parameter: ");
+
+                parameters.add(scan.nextLine());
+
+            }
+
+        }
+
+        return parameters;
+
+    }
+
+    public static Object getMVReturnValue(Scanner scan){
+
+        System.out.println("Select the data type for the expected return value:\n");
+        System.out.println("1. int");
+        System.out.println("2. String");
+        System.out.println("3. Boolean\n");
+
+        System.out.print("Enter selection: ");
+
+        int selection = Integer.parseInt(scan.nextLine());
+
+        clr();
+
+        //Create expected value object and get expected value from user
+                        
+        Object expectedValue = new Object();
+
+        System.out.print("Enter the expected return value for the method: ");
+
+        String expectedValueString = scan.nextLine();
+
+        //Assign expectedValue based on data type
+
+        if(selection == 1){
+
+            expectedValue = Integer.valueOf(expectedValueString);
+
+        }
+        else if(selection == 2){
+
+            expectedValue = expectedValueString;
+
+
+        }
+        else if(selection == 3){
+
+            expectedValue = Boolean.valueOf(expectedValueString);
+
+        }
+
+        return expectedValue;
 
     }
 
