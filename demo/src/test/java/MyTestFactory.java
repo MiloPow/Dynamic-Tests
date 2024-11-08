@@ -105,7 +105,7 @@ public class MyTestFactory {
 
             if(choice == 1){
 
-                createAssignmentSpec(fileManager, scan);
+                createAssignmentSpec(fileManager, scan, aSpec);
 
             }
             else if(choice == 2){
@@ -125,7 +125,7 @@ public class MyTestFactory {
         scan.close();
     }
 
-    public static void createAssignmentSpec(FileManager fileManager, Scanner scan){
+    public static void createAssignmentSpec(FileManager fileManager, Scanner scan, AssignmentSpec aSpec){
 
         System.out.print("Enter the Assignment Spec name: ");
 
@@ -146,7 +146,7 @@ public class MyTestFactory {
 
         promptAndClear(scan);
 
-        displayTCMenu(scan);
+        displayTCMenu(scan, aSpec, fileManager);
     }
 
     public static void loadAssignmentSpec(FileManager fileManager, Scanner scan, AssignmentSpec aSpec){
@@ -166,7 +166,7 @@ public class MyTestFactory {
 
         promptAndClear(scan);
 
-        displayTCMenu(scan);
+        displayTCMenu(scan, aSpec, fileManager);
     }
 
     public static void specifyFolder(Scanner scan){
@@ -189,7 +189,7 @@ public class MyTestFactory {
 
     }
 
-    public static void displayTCMenu(Scanner scan){
+    public static void displayTCMenu(Scanner scan, AssignmentSpec aSpec, FileManager fileManager){
 
         int choice = 0;
 
@@ -213,25 +213,43 @@ public class MyTestFactory {
 
                 //Create test case for class presence
 
+                ClassPresenceTC cpTestCase = createCPTest(scan);
+
+                aSpec.addTestCase(cpTestCase);
+
             }
             else if(choice == 2){
 
-                //Create test case for method presence
+                //Create test case for method 
+                
+                MethodPresenceTC mpTestCase = createMPTest(scan);
+
+                aSpec.addTestCase(mpTestCase);
 
             }
             else if(choice == 3){
 
                 //Create test case for method return value
 
+                MethodValueTC mvTestCase = createMVTest(scan);
+
+                aSpec.addTestCase(mvTestCase);
+
             }
             else if(choice == 4){
 
                 //View test cases
 
+                clr();
+
+                printTestCases(aSpec.getTestCases());
+
             }
             else if(choice == 5){
 
                 //Save assignment spec
+
+                fileManager.saveASpecToFile(aSpec);
 
             }
 
@@ -239,7 +257,7 @@ public class MyTestFactory {
 
     }
 
-    ClassPresenceTC createCPTest(Scanner scan){
+    static ClassPresenceTC createCPTest(Scanner scan){
 
         clr();
 
@@ -259,7 +277,7 @@ public class MyTestFactory {
 
     }
 
-    MethodPresenceTC createMPTest(Scanner scan){
+    static MethodPresenceTC createMPTest(Scanner scan){
 
         clr();
 
@@ -281,7 +299,7 @@ public class MyTestFactory {
 
     }
 
-    MethodValueTC createMVTest(Scanner scan){
+    static MethodValueTC createMVTest(Scanner scan){
 
         clr();
 
@@ -461,6 +479,19 @@ public class MyTestFactory {
 
         System.out.print("\033[H\033[2J");  
         System.out.flush();
+
+    }
+
+    public static void printTestCases(ArrayList<TestCase> ts){
+
+        int x = 1;
+
+        for(TestCase t : ts){
+
+            System.out.println("\n" + String.valueOf(x) + ". " + t.toString() + "\n");
+            x++;
+
+        }
 
     }
     
