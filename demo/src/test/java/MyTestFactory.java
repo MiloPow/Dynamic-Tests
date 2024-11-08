@@ -83,7 +83,7 @@ public class MyTestFactory {
 
         //Primary menu for creating or loading ASpecs
 
-        while(choice != 4){
+        while(choice != 5){
 
             clr();
 
@@ -94,7 +94,8 @@ public class MyTestFactory {
             System.out.println("1. Create new assignment specification"); 
             System.out.println("2. Load pre-existing assignment specification");
             System.out.println("3. Specify folder for loading and saving assignment specs");
-            System.out.println("4. Exit");
+            System.out.println("4. Delete Assignment Spec");
+            System.out.println("5. Exit");
 
             System.out.print("\nEnter selection: ");
 
@@ -118,6 +119,11 @@ public class MyTestFactory {
                 specifyFolder(scan);
 
             }
+            else if(choice == 4){
+
+                deleteAssignmentSpec(scan, fileManager, aSpec.getName());
+
+            }
 
         }
 
@@ -137,16 +143,19 @@ public class MyTestFactory {
 
             System.out.println("File successfully created!\n\n");
 
+            promptAndClear(scan);
+
+            displayTCMenu(scan, aSpec, fileManager);
+
         }
         else{
 
             System.out.println("File name already. If you wish to load an existing file, use the load option from the main menu.\n\n");
 
+            promptAndClear(scan);
+
         }
-
-        promptAndClear(scan);
-
-        displayTCMenu(scan, aSpec, fileManager);
+        
     }
 
     public static void loadAssignmentSpec(FileManager fileManager, Scanner scan, AssignmentSpec aSpec){
@@ -462,6 +471,51 @@ public class MyTestFactory {
         }
 
         return expectedValue;
+
+    }
+
+    public static void deleteAssignmentSpec(Scanner scan, FileManager fileManager, String aspecName){
+
+        clr();
+
+        if(aspecName == null){
+
+            System.out.println("No spec is currently loaded\n\n");
+
+            promptAndClear(scan);
+
+            return;
+
+        }
+
+        //Note user must selected aspec. Should warn user of this
+
+        System.out.println("Are you sure you want to delete " + aspecName + "?\n\n");
+
+        int choice = 0;
+
+        System.out.println("1. Yes");
+        System.out.println("2. No\n\n");
+
+        System.out.print("Enter selection: ");
+
+        choice = Integer.parseInt(scan.nextLine());
+
+        if(choice == 1){
+            
+            Boolean deletionSuccess = fileManager.deleteASpec();
+
+            clr();
+
+            if(deletionSuccess)
+                System.out.println("File deleted successfully!\n\n");
+            else
+                System.out.println("Error deleting file.\n\n");
+            
+            promptAndClear(scan);
+            
+        
+        }
 
     }
 

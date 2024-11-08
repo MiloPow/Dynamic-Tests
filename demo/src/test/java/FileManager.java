@@ -65,6 +65,7 @@ public class FileManager {
         FileManager.setFilePath(FileManager.folder, aspecName);
 
         File aspecFile = new File(FileManager.filePath);
+        
 
         if(aspecFile.exists()){
             return false;
@@ -200,6 +201,14 @@ public class FileManager {
         }
 
         return true;        
+
+    }
+
+    public Boolean deleteASpec(){
+
+        File aspecFile = new File(filePath);
+
+        return aspecFile.delete();
 
     }
 
