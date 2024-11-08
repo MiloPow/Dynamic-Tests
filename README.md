@@ -1,11 +1,8 @@
 **Changes made from last commit:**
 
-- MyTestFactory now displays main menu and allows for ASpec file creation
-
-  - Started working on load functionality but it currently throws an error
+- MyTestFactory now has functions for displaying necessary menus and creating test cases
  
 **Next tasks:**
 
-- Fix load functionality
-
-- Consider moving output to separate file
+- Must implement created functions
+- Need to figure how test cases would be converted to dynamic tests for running
