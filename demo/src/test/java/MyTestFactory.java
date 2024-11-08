@@ -228,6 +228,10 @@ public class MyTestFactory {
 
                 aSpec.addTestCase(cpTestCase);
 
+                System.out.println("Test case created!!\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 2){
 
@@ -236,6 +240,10 @@ public class MyTestFactory {
                 MethodPresenceTC mpTestCase = createMPTest(scan);
 
                 aSpec.addTestCase(mpTestCase);
+
+                System.out.println("Test case created!!\n\n");
+
+                promptAndClear(scan);
 
             }
             else if(choice == 3){
@@ -246,6 +254,10 @@ public class MyTestFactory {
 
                 aSpec.addTestCase(mvTestCase);
 
+                System.out.println("Test case created!!\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 4){
 
@@ -255,12 +267,29 @@ public class MyTestFactory {
 
                 printTestCases(aSpec.getTestCases());
 
+                System.out.println("\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 5){
 
                 //Save assignment spec
 
-                fileManager.saveASpecToFile(aSpec);
+                clr();
+
+                if(fileManager.saveASpecToFile(aSpec)){
+
+                    System.out.println("Assignment Spec saved successfully!\n\n");
+
+                }
+                else{
+
+                    System.out.println("Error saving file.\n\n");
+
+                }
+
+                promptAndClear(scan);
 
             }
 
@@ -272,7 +301,7 @@ public class MyTestFactory {
 
         clr();
 
-        System.out.println("Enter the name of the class you wish to test for: ");
+        System.out.print("Enter the name of the class you wish to test for: ");
 
         String className = scan.nextLine();
 
@@ -326,6 +355,8 @@ public class MyTestFactory {
 
         ArrayList<String> parameters = getMVParameters(scan);
 
+        clr();
+
         Object expectedValue = getMVReturnValue(scan);
 
         MethodValueTC mvTestCase = new MethodValueTC(className, methodName, parameters, expectedValue);
@@ -359,15 +390,27 @@ public class MyTestFactory {
 
                 parameters.add("int");
 
+                System.out.println("\n\nInteger parameter successfully added!\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 2){
 
                 parameters.add("String");
 
+                System.out.println("\n\nString parameter successfully added!\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 3){
 
                 parameters.add("Boolean");
+
+                System.out.println("\n\nBoolean parameter successfully added!\n\n");
+
+                promptAndClear(scan);
 
             }
 
@@ -406,6 +449,10 @@ public class MyTestFactory {
 
                 parameters.add(scan.nextLine());
 
+                System.out.println("\n\nInteger parameter successfully added!\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 2){
 
@@ -415,6 +462,10 @@ public class MyTestFactory {
 
                 parameters.add(scan.nextLine());
 
+                System.out.println("\n\nString parameter successfully added!\n\n");
+
+                promptAndClear(scan);
+
             }
             else if(choice == 3){
 
@@ -423,6 +474,10 @@ public class MyTestFactory {
                 System.out.print("\nEnter Boolean value for test parameter: ");
 
                 parameters.add(scan.nextLine());
+
+                System.out.println("\n\nBoolean parameter successfully added!\n\n");
+
+                promptAndClear(scan);
 
             }
 

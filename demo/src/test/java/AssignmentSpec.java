@@ -14,6 +14,7 @@ public class AssignmentSpec {
 
     public AssignmentSpec(){
 
+        testCases = new ArrayList<TestCase>();
 
     }
 
