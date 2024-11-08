@@ -67,6 +67,7 @@ public class MyTestFactory {
     public static List<DynamicTest> exampleTestFactory() {
 
         DynamicTest test = dynamicTest("Dynamic Test", () -> assertEquals(4, 2 * 2));
+        
 	
         return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
     }
@@ -113,7 +114,7 @@ public class MyTestFactory {
             }
             else if(choice == 3){
 
-                specifyFilePath(scan);
+                specifyFolder(scan);
 
             }
 
@@ -143,6 +144,8 @@ public class MyTestFactory {
         }
 
         promptAndClear(scan);
+
+        displayTCMenu(scan);
     }
 
     public static void loadAssignmentSpec(FileManager fileManager, Scanner scan, AssignmentSpec aSpec){
@@ -162,11 +165,76 @@ public class MyTestFactory {
 
         promptAndClear(scan);
 
+        displayTCMenu(scan);
     }
 
-    public static void specifyFilePath(Scanner scan){
+    public static void specifyFolder(Scanner scan){
 
-        System.out.println("This feature is yet to be implemented.");
+        clr();;
+
+        System.out.println("Enter the file path for the folder you wish to use.\n");
+
+        System.out.println("Note that for every backslash, you must enter 2 instead of 1.\n");
+
+        System.out.print("Specify File path: ");
+
+        String folder = scan.nextLine();
+
+        FileManager.setFolder(folder);
+
+        System.out.println("Folder loaded successfully!");
+
+        promptAndClear(scan);
+
+    }
+
+    public static void displayTCMenu(Scanner scan){
+
+        int choice = 0;
+
+        while(choice != 6){
+
+            clr();
+
+            System.out.println("1. Create test case for class presence");
+            System.out.println("2. Create test case for method presence");
+            System.out.println("3. Create test case for method return value");
+            System.out.println("4. View created test cases");
+            System.out.println("5. Save assignment specification");
+            System.out.println("6. Exit");
+
+            System.out.print("\nEnter selection: ");
+
+            choice = Integer.parseInt(scan.nextLine());
+            clr();
+
+            if(choice == 1){
+
+                //Create test case for class presence
+
+            }
+            else if(choice == 2){
+
+                //Create test case for method presence
+
+            }
+            else if(choice == 3){
+
+                //Create test case for method return value
+
+            }
+            else if(choice == 4){
+
+                //View test cases
+
+            }
+            else if(choice == 5){
+
+                //Save assignment spec
+
+            }
+
+        }
 
     }
 

@@ -146,50 +146,60 @@ public class FileManager {
 
     public Boolean loadASpecFromFile(AssignmentSpec aSpec){
 
-        try{
+        //Ensure file is not empty
 
-            JSONParser parser = new JSONParser();
+        File f = new File(filePath);
 
-            JSONObject j = (JSONObject)parser.parse(new FileReader(filePath));
+        if(f.length() != 0){
 
-            for(Object value : j.values()){
-
-                ArrayList<?> tcAttributes = (ArrayList<?>)value;
-
-                //Load test case depending on test case type
-
-                String tcType = tcAttributes.get(1).toString();
-
-                if(tcType.equals("ClassPresenceTC")){
-
-                    ClassPresenceTC cpTestCase = loadClassPTCFromArrayList(tcAttributes);
-                    aSpec.addTestCase(cpTestCase);
-
+            try{
+    
+                JSONParser parser = new JSONParser();
+    
+                JSONObject j = (JSONObject)parser.parse(new FileReader(filePath));
+    
+                //Only create objects if file isn't empty
+    
+                for(Object value : j.values()){
+    
+                    ArrayList<?> tcAttributes = (ArrayList<?>)value;
+    
+                    //Load test case depending on test case type
+    
+                    String tcType = tcAttributes.get(1).toString();
+    
+                    if(tcType.equals("ClassPresenceTC")){
+    
+                        ClassPresenceTC cpTestCase = loadClassPTCFromArrayList(tcAttributes);
+                        aSpec.addTestCase(cpTestCase);
+    
+                    }
+                    else if(tcType.equals("MethodPresenceTC")){
+    
+                        MethodPresenceTC mpTestCase = loadMethodPTCFromArrayList(tcAttributes);
+                        aSpec.addTestCase(mpTestCase);
+                        
+                    }
+                    else if(tcType.equals("MethodValueTC")){
+    
+                        MethodValueTC mvTestCase = loadMethodVTCFromArrayList(tcAttributes);
+                        aSpec.addTestCase(mvTestCase);
+                        
+                    }
+    
                 }
-                else if(tcType.equals("MethodPresenceTC")){
-
-                    MethodPresenceTC mpTestCase = loadMethodPTCFromArrayList(tcAttributes);
-                    aSpec.addTestCase(mpTestCase);
-                    
-                }
-                else if(tcType.equals("MethodValueTC")){
-
-                    MethodValueTC mvTestCase = loadMethodVTCFromArrayList(tcAttributes);
-                    aSpec.addTestCase(mvTestCase);
-                    
-                }
-
+    
+                return true;
+    
+            } catch(Exception e){
+        
+                return false;
+    
             }
-
-            return true;
-
-        } catch(Exception e){
-
-            return false;
 
         }
 
-        
+        return true;        
 
     }
 
