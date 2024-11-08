@@ -135,11 +135,13 @@ public class MyTestFactory {
 
         System.out.print("Enter the Assignment Spec name: ");
 
-        String aspecName = scan.nextLine();
+        aSpec.setName(scan.nextLine());
+        
+        FileManager.setFilePath(aSpec.getName());
 
         clr();
 
-        if(fileManager.createAspecFile(aspecName)){
+        if(fileManager.createAspecFile(aSpec.getName())){
 
             System.out.println("File successfully created!\n\n");
 
