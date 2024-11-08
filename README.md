@@ -1,9 +1,15 @@
 **Changes made from last commit:**
 
-- Fixed file deletion so that it works right after the file has been created
+- Tested creating every type of test case
+
+- Tested saving and loading
+
+- Found that creating and saving every type of Test Case works, however a loading error was discovered
+ 
+- The error only occurred after adding several test cases of various types
  
 **Next tasks:**
 
-- Test existing functionality to ensure everything works
+- Fix loading error
 
-- Figure out how to create and run dynamicTests so that the ASpec can be runned
+- Figure out how to create and run DynamicTests so that the ASpec can be runned
