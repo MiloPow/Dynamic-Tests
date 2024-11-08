@@ -1,7 +1,9 @@
 **Changes made from last commit:**
 
-- Added file deletino functionality to FileManager and implemented in MyTestFactory
+- Fixed file deletion so that it works right after the file has been created
  
 **Next tasks:**
 
-- Currently file can only be deletede if load option was used (it wont work after creating a file). This must be fixed.
+- Test existing functionality to ensure everything works
+
+- Figure out how to create and run dynamicTests so that the ASpec can be runned
