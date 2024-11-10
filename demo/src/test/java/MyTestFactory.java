@@ -562,7 +562,7 @@ public class MyTestFactory {
             
             Boolean deletionSuccess = fileManager.deleteASpec();
 
-            clr();
+            // clr();
 
             if(deletionSuccess)
                 System.out.println("File deleted successfully!\n\n");

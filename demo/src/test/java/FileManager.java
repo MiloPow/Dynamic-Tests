@@ -14,8 +14,8 @@ public class FileManager {
 
     //Attributes
 
-    private static String folder = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
-    private static String filePath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
+    private static String folder = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
+    private static String filePath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
     
     //Default constructor
 
@@ -207,6 +207,12 @@ public class FileManager {
     public Boolean deleteASpec(){
 
         File aspecFile = new File(filePath);
+
+        //Debug
+
+        System.out.println("Deleting: " + filePath);
+
+        setFilePath(folder);
 
         return aspecFile.delete();
 

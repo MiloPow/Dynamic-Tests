@@ -1,5 +1,10 @@
 // package com.example;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+
+import org.junit.jupiter.api.DynamicTest;
+
 public class ClassPresenceTC implements TestCase {
 
     //Attributes
@@ -47,6 +52,36 @@ public class ClassPresenceTC implements TestCase {
             System.out.println("\nTest Case Failed: " + className + " Class not found.\n");
         
             return false;
+
+        }
+
+    }
+
+    public Boolean runDynamicTest(){
+
+
+        try{
+
+            Class<?> c = Class.forName("com.example." + className);
+
+            DynamicTest dt = dynamicTest(testCaseName, () -> assertTrue(true));
+
+            try{
+
+                dt.getExecutable().execute();
+
+            } catch(Throwable t){
+
+                System.out.println(t);
+
+            }
+
+            return true;
+
+        } catch(ClassNotFoundException e){
+        
+            return false;
+
 
         }
 

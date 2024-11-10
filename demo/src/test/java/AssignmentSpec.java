@@ -1,5 +1,10 @@
 // package com.example;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.Assert;
+
 import java.util.ArrayList;
 
 public class AssignmentSpec {
@@ -58,6 +63,35 @@ public class AssignmentSpec {
 
         for(TestCase t : testCases){
             t.run();
+        }
+
+    }
+
+    public void runDynamicTests(){
+
+        for(TestCase t : testCases){
+
+            if(t instanceof ClassPresenceTC){
+
+                ClassPresenceTC cpTestCase = (ClassPresenceTC)t;
+
+                DynamicTest dt = dynamicTest(cpTestCase.getTestCaseName(), () -> assertEquals(4, 2+2));
+
+
+                //How would I compare?
+                
+            }
+            else if(t instanceof MethodPresenceTC){
+
+
+
+            }
+            else if(t instanceof MethodValueTC){
+
+
+                
+            }
+
         }
 
     }

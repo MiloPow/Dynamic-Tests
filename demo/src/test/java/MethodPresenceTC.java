@@ -114,6 +114,65 @@ public class MethodPresenceTC implements TestCase {
 
     }
 
+    public Boolean runDynamicTest(){
+
+        try{
+
+            //Create Boolean for if the method is found so success or error output can be displayed appropriately
+        
+            Boolean found = false;
+
+            Class<?> c = Class.forName("com.example." + className);
+
+            Method[] methods = c.getMethods();
+
+            for(Method m : methods){
+                
+                if(m.getName().equals(methodName)){
+
+
+                    //Check if parameter types of equal by extracting parameter types into ArrayList
+                    //then calling equals() to compay ArrayList with methodParams ArrayList
+
+                    Class<?>[] paramTypes = m.getParameterTypes();
+
+                    ArrayList<String> paramTypesArray = new ArrayList<String>();
+
+                    for(int x = 0;x < paramTypes.length;x++){
+
+                        paramTypesArray.add(paramTypes[x].getName());
+
+                    }
+
+                    if(paramTypesArray.equals(methodParams)){
+
+                        found = true;
+
+                    }
+
+                }
+
+            }
+
+            if(found){
+                System.out.println("\nTest Case Passed: " + className + "." + methodName + "() Method Found!\n");
+                return true;
+            }
+            else
+                System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found\n");
+
+        } catch(ClassNotFoundException e){
+
+            System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found\n");
+        
+            return false;
+
+        }
+
+        return false;
+
+    }
+
     @Override
     public String toString() {
         return testCaseName;
