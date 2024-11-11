@@ -1,20 +1,11 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
-import com.example.Calculator;
-
 public class MyTestFactory {
-
-    private static List<DynamicTest> dynamicTests;
 
     public static void main(String[] args) {
 
@@ -24,64 +15,14 @@ public class MyTestFactory {
 
         AssignmentSpec aSpec = new AssignmentSpec();
 
-        dynamicTests = Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), 
-        dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
-
         displayMainMenu(fileManager, aSpec);
-
-        //Create DynamicTest objects for each test case
-
-        //Execute DynamicTests and show results
-
-        // List<DynamicTest> myTests = exampleTestFactory();
-
-        // for(DynamicTest test : myTests){
-
-
-        //     System.out.print("Test display name:");
-
-        //     System.out.println(test.getDisplayName());
-
-        //     try{
-
-        //         test.getExecutable().execute();
-                
-        //         System.out.println("Test Case passed!");
-
-        //         Class<?> c = test.getClass();
-
-        //         Calculator calc = new Calculator();
-
-        //         System.out.println("Class name: " + c.getName());
-
-        //     } catch(Throwable t){
-
-        //         System.out.println("Test Case Failed: " + t);
-
-        //     }
-
-            
-
-            
-
-        // }
-
-        // System.out.println("Tests ran! Returning tests...");
     }
 
     @TestFactory
     public static List<DynamicTest> testFactory(AssignmentSpec aSpec) {
 
-
         return aSpec.getDynamicTests();
-
-        // return dynamicTests;
-
-        // DynamicTest test = dynamicTest("Dynamic Test", () -> assertEquals(4, 2 * 2));
-        
-	
-        // return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), 
-        // dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
+    
     }
 
     public static void displayMainMenu(FileManager fileManager, AssignmentSpec aSpec){
