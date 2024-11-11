@@ -1,14 +1,19 @@
+**Note:**
+
+- Note that in the past few commits I said "X now works using DynamicTest" which was misleading since I wasn't calling a TestFactory function
+
 **Changes made from last commit:**
 
-- MVTC now works using DynamicTest
+- MyTestFactory now runs the TestFactory annotated function as opposed to calling runDynamicTest for every test case
+
+- getDynamicTest was added as an abstract method for the TestCase interface as all TestCases need it
+ - (MyTestFactory needs to be able to get the dynamic tests from the test cases)
+
+- getDynamicTest has been implemented for CPTC
  
 **Next tasks:**
 
-- Revise overall application and determine next logical step
- - Consider reworking the functionality for DynamicTest
- - Currently the program only _technically_ uses DynamicTests. It uses assertTrue when the test case is tested using the previous method.
-
-- Remember a TestFactory function should return a collection of DynamicTests which would be called in the main function
-
-- Fix deleting error found from last commit (deleting a file that isn't empty doesn't work)
+- Implement getDynamicTest function for MPTC and MVTC
+ 
+- Fix deleting error (deleting a file that isn't empty doesn't work)
 
