@@ -14,6 +14,8 @@ import com.example.Calculator;
 
 public class MyTestFactory {
 
+    private static List<DynamicTest> dynamicTests;
+
     public static void main(String[] args) {
 
         //Create ASpec object based on file
@@ -21,6 +23,9 @@ public class MyTestFactory {
         FileManager fileManager = new FileManager();
 
         AssignmentSpec aSpec = new AssignmentSpec();
+
+        dynamicTests = Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), 
+        dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
 
         displayMainMenu(fileManager, aSpec);
 
@@ -65,12 +70,18 @@ public class MyTestFactory {
     }
 
     @TestFactory
-    public static List<DynamicTest> exampleTestFactory() {
+    public static List<DynamicTest> runTestFactory(AssignmentSpec aSpec) {
 
-        DynamicTest test = dynamicTest("Dynamic Test", () -> assertEquals(4, 2 * 2));
+
+        return aSpec.getDynamicTests();
+
+        // return dynamicTests;
+
+        // DynamicTest test = dynamicTest("Dynamic Test", () -> assertEquals(4, 2 * 2));
         
 	
-        return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
+        // return Arrays.asList(dynamicTest("Dynamic square " + 2, () -> assertEquals(5, 2 * 2)), 
+        // dynamicTest("Dynamic true " + true, () -> assertTrue(true)));
     }
 
     public static void displayMainMenu(FileManager fileManager, AssignmentSpec aSpec){
@@ -127,7 +138,38 @@ public class MyTestFactory {
             }
             else if(choice == 5){
 
-                runAssignmentSpec(aSpec, scan);
+                // runAssignmentSpec(aSpec, scan);
+                
+                List<DynamicTest> myTests = runTestFactory(aSpec);
+
+                for(DynamicTest test : myTests){
+
+
+                    System.out.print("Test display name:");
+
+                    System.out.print(test.getDisplayName());
+
+                    try{
+
+                        test.getExecutable().execute();
+                        
+                        System.out.println(" -> Test Case passed!");
+
+                        // Class<?> c = test.getClass();
+
+                        // Calculator calc = new Calculator();
+
+                        // System.out.println("Class name: " + c.getName());
+
+                    } catch(Throwable t){
+
+                        System.out.println(" -> Test Case Failed!");
+
+                    }
+
+                }
+
+                promptAndClear(scan);
 
             }
 

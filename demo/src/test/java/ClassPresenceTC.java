@@ -92,6 +92,23 @@ public class ClassPresenceTC implements TestCase {
     }
 
     @Override
+    public DynamicTest getDynamicTest(){
+
+        try{
+
+            Class<?> c = Class.forName("com.example." + className);
+
+            return dynamicTest(testCaseName, () -> assertTrue(true));
+
+        } catch(ClassNotFoundException e){
+
+            return dynamicTest(testCaseName, () -> assertTrue(false));
+
+        }
+
+    }
+
+    @Override
     public String toString() {
         return testCaseName;
     }

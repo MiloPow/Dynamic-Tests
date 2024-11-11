@@ -203,6 +203,12 @@ public class MethodPresenceTC implements TestCase {
     }
 
     @Override
+    public DynamicTest getDynamicTest() {
+        // TODO Auto-generated method stub
+        return dynamicTest(testCaseName, () -> assertTrue(true));
+    }
+
+    @Override
     public String toString() {
         return testCaseName;
     }

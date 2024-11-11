@@ -6,6 +6,9 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.Assert;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class AssignmentSpec {
 
@@ -74,6 +77,20 @@ public class AssignmentSpec {
             t.runDynamicTest();
 
         }
+
+    }
+
+    public List<DynamicTest> getDynamicTests(){
+
+        List<DynamicTest> dynamicTests = new LinkedList<>();
+
+        for(TestCase t : testCases){
+
+            dynamicTests.add(t.getDynamicTest());
+
+        }
+
+        return dynamicTests;
 
     }
 
