@@ -83,7 +83,7 @@ public class MyTestFactory {
 
         //Primary menu for creating or loading ASpecs
 
-        while(choice != 5){
+        while(choice != 6){
 
             clr();
 
@@ -95,7 +95,8 @@ public class MyTestFactory {
             System.out.println("2. Load pre-existing assignment specification");
             System.out.println("3. Specify folder for loading and saving assignment specs");
             System.out.println("4. Delete Assignment Spec");
-            System.out.println("5. Exit");
+            System.out.println("5. Run Assignment Spec");
+            System.out.println("6. Exit");
 
             System.out.print("\nEnter selection: ");
 
@@ -122,6 +123,11 @@ public class MyTestFactory {
             else if(choice == 4){
 
                 deleteAssignmentSpec(scan, fileManager, aSpec.getName());
+
+            }
+            else if(choice == 5){
+
+                runAssignmentSpec(aSpec, scan);
 
             }
 
@@ -573,6 +579,17 @@ public class MyTestFactory {
             
         
         }
+
+    }
+
+    public static void runAssignmentSpec(AssignmentSpec aSpec, Scanner scan){
+
+        clr();
+
+        // aSpec.runTestCases();
+        aSpec.runDynamicTests();
+
+        promptAndClear(scan);
 
     }
 

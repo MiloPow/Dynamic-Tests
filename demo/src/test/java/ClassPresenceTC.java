@@ -57,6 +57,7 @@ public class ClassPresenceTC implements TestCase {
 
     }
 
+    @Override
     public Boolean runDynamicTest(){
 
 
@@ -70,9 +71,11 @@ public class ClassPresenceTC implements TestCase {
 
                 dt.getExecutable().execute();
 
+                System.out.println("Test case passed! " + dt.getDisplayName());
+
             } catch(Throwable t){
 
-                System.out.println(t);
+                System.out.println("Test case failed. " +dt.getDisplayName());
 
             }
 

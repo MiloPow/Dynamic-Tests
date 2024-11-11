@@ -218,6 +218,11 @@ public class MethodValueTC implements TestCase {
 
         return false;
     }
+    @Override
+    public Boolean runDynamicTest() {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
     @Override
     public String toString() {

@@ -71,26 +71,7 @@ public class AssignmentSpec {
 
         for(TestCase t : testCases){
 
-            if(t instanceof ClassPresenceTC){
-
-                ClassPresenceTC cpTestCase = (ClassPresenceTC)t;
-
-                DynamicTest dt = dynamicTest(cpTestCase.getTestCaseName(), () -> assertEquals(4, 2+2));
-
-
-                //How would I compare?
-                
-            }
-            else if(t instanceof MethodPresenceTC){
-
-
-
-            }
-            else if(t instanceof MethodValueTC){
-
-
-                
-            }
+            t.runDynamicTest();
 
         }
 
