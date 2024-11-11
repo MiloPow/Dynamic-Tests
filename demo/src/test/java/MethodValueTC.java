@@ -327,8 +327,89 @@ public class MethodValueTC implements TestCase {
 
     @Override
     public DynamicTest getDynamicTest() {
-        // TODO Auto-generated method stub
-        return dynamicTest(testCaseName, () -> assertTrue(true));
+
+        try{
+
+            //Create Boolean for if the method is found so success or error output can be displayed appropriately
+        
+            Boolean found = false;
+
+            //Get a reference to the class
+        
+            Class<?> c = Class.forName("com.example." + className);
+
+            //Get object so method can be invoked
+
+            Object instance = c.getDeclaredConstructor().newInstance();
+            
+            //Get the class's methods
+
+            Method[] methods = c.getMethods();
+
+            //Create dynamic test
+
+            DynamicTest dt = dynamicTest(testCaseName, () -> assertTrue(true));
+
+            //Search for the method and when found run test based on given parameters
+
+            for(Method m : methods){
+                
+                if(m.getName().equals(methodName)){
+
+                    //If method found run test
+
+                    try{
+
+                        //Invoke method and check if the return value matches the expected value
+
+                        //create dt
+
+                        // DynamicTest dt = dynamicTest(testCaseName, () -> assertEquals(m.invoke(instance, trueParams.toArray()), expectedValue));
+                        
+
+                        if(m.invoke(instance, trueParams.toArray()).equals(expectedValue)){
+
+                            //print success
+
+                            found = true;
+                            // System.out.println("\nTest Case successful! Return value matches expected value.\n");
+
+                            // return true;
+
+                        }
+
+                    } catch(Exception e){
+
+                        System.out.println("Error invoking method: " + e);
+
+                        //Error invoking method: java.lang.IllegalArgumentException: object is not an instance of declaring class
+
+                        return dynamicTest(testCaseName, () -> assertTrue(false));
+
+                    }
+
+                }
+
+            }
+
+            //Print result
+
+            if(found){
+
+                return dynamicTest(testCaseName, () -> assertTrue(true));
+                
+            }
+            else{
+
+                return dynamicTest(testCaseName, () -> assertTrue(false));
+
+            }
+
+        } catch(Exception e){
+
+            return dynamicTest(testCaseName, () -> assertTrue(false));
+
+        }
     }
     
     @Override
