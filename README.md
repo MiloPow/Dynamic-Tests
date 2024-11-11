@@ -1,14 +1,14 @@
 **Changes made from last commit:**
 
-- MPTC now works using DynamicTest
-
-- Edited Calculator.java to include the add function
-
-- TestCase interface now has the abstract method "runDynamicTest" so that it can be called on any type of TestCase
+- MVTC now works using DynamicTest
  
 **Next tasks:**
 
-- Implement runDynamicTest functions for MVTC
+- Revise overall application and determine next logical step
+ - Consider reworking the functionality for DynamicTest
+ - Currently the program only _technically_ uses DynamicTests. It uses assertTrue when the test case is tested using the previous method.
+
+- Remember a TestFactory function should return a collection of DynamicTests which would be called in the main function
 
 - Fix deleting error found from last commit (deleting a file that isn't empty doesn't work)
 
