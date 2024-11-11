@@ -1,15 +1,12 @@
 **Changes made from last commit:**
 
-- Tested creating every type of test case
+- CPTC now works using DynamicTest
 
-- Tested saving and loading
-
-- Found that creating and saving every type of Test Case works, however a loading error was discovered
- 
-- The error only occurred after adding several test cases of various types
+- TestCase interface now has the abstract method "runDynamicTest" so that it can be called on any type of TestCase
  
 **Next tasks:**
 
-- Fix loading error
+- Implement runDynamicTest functions for MPTC and MVTC
 
-- Figure out how to create and run DynamicTests so that the ASpec can be runned
+- Fix deleting error found from last commit (deleting a file that isn't empty doesn't work)
+
