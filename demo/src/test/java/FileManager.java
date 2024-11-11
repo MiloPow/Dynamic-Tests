@@ -14,8 +14,8 @@ public class FileManager {
 
     //Attributes
 
-    private static String folder = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
-    private static String filePath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
+    private static String folder = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
+    private static String filePath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\src\\main\\java\\com\\example\\ASpecs";
     
     //Default constructor
 
