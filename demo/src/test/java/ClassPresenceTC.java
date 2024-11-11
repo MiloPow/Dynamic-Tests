@@ -1,5 +1,6 @@
 // package com.example;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
@@ -71,11 +72,11 @@ public class ClassPresenceTC implements TestCase {
 
                 dt.getExecutable().execute();
 
-                System.out.println("Test case passed! " + dt.getDisplayName());
+                System.out.println("\nTest Case Passed: " + className + " Class Found!\n");
 
             } catch(Throwable t){
 
-                System.out.println("Test case failed. " +dt.getDisplayName());
+                System.out.println("\nTest Case Failed: " + className + " Class not found.\n");
 
             }
 

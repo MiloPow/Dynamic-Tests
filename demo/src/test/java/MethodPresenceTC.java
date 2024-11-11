@@ -1,7 +1,12 @@
 // package com.example;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+
+import org.junit.jupiter.api.DynamicTest;
 
 public class MethodPresenceTC implements TestCase {
 
@@ -68,7 +73,7 @@ public class MethodPresenceTC implements TestCase {
             Method[] methods = c.getMethods();
 
             for(Method m : methods){
-                
+
                 if(m.getName().equals(methodName)){
 
 
@@ -100,7 +105,7 @@ public class MethodPresenceTC implements TestCase {
                 return true;
             }
             else
-                System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found\n");
+                System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found\n (found = false)");
 
         } catch(ClassNotFoundException e){
 
@@ -126,6 +131,10 @@ public class MethodPresenceTC implements TestCase {
             Class<?> c = Class.forName("com.example." + className);
 
             Method[] methods = c.getMethods();
+
+            //Create dt
+
+            DynamicTest dt = dynamicTest(testCaseName, () -> assertTrue(true));
 
             for(Method m : methods){
                 
@@ -156,21 +165,40 @@ public class MethodPresenceTC implements TestCase {
             }
 
             if(found){
-                System.out.println("\nTest Case Passed: " + className + "." + methodName + "() Method Found!\n");
-                return true;
+
+                try{
+
+                    dt.getExecutable().execute();
+
+                    System.out.println("\nTest Case Passed: " + className + "." + methodName + "() Method Found!\n");
+                    
+                    return true;
+
+                }catch(Throwable throwable){
+
+                    System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found (dt failed)\n");
+
+                    return false;
+
+                }
+                
             }
-            else
-                System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found\n");
+            else{
+
+                System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found (found = false)\n");
+
+                return false;
+
+            }
+                
 
         } catch(ClassNotFoundException e){
 
-            System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found\n");
+            System.out.println("\nTest Case Failed: " + className + "." + methodName + "() Method Not found(ClassNotFoundException thrown)\n");
         
             return false;
 
         }
-
-        return false;
 
     }
 
