@@ -3,20 +3,64 @@ package com.example;
 import javax.tools.ToolProvider;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import javax.tools.JavaCompiler;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\test\\java\\MyTestFactory.java";
 
-        boolean compilationResult = compileFile(filePath);
+        createFile();
 
-        if (compilationResult) {
-            runFile("MyTestFactory");
-        } else {
-            System.out.println("Compilation failed.");
+        // String filePath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\test\\java\\MyTestFactory.java";
+
+        // boolean compilationResult = compileFile(filePath);
+
+        // if (compilationResult) {
+        //     runFile("MyTestFactory");
+        // } else {
+        //     System.out.println("Compilation failed.");
+        // }
+    }
+
+    public static void createFile(){
+
+        String className = "HelloWorld";
+
+        String code = """
+
+        public class HelloWorld{
+
+            public static void main(String[] args){
+            
+                System.out.println("Hello World!");
+            
+            }
+        
         }
+        """;
+
+        String folder = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\test\\java";
+
+        try{
+
+            File file = new File(folder + "\\" + className + ".java");
+
+            try(FileWriter writer = new FileWriter(file)){
+                
+                writer.write(code);
+            
+            }
+
+
+
+
+        } catch(Exception e){
+
+            System.out.println("Error created file: " + e);
+
+        }
+
     }
 
     public static boolean compileFile(String filePath) {
