@@ -204,8 +204,62 @@ public class MethodPresenceTC implements TestCase {
 
     @Override
     public DynamicTest getDynamicTest() {
-        // TODO Auto-generated method stub
-        return dynamicTest(testCaseName, () -> assertTrue(true));
+
+        try{
+
+            //Create Boolean for if the method is found so success or error output can be displayed appropriately
+        
+            Boolean found = false;
+
+            Class<?> c = Class.forName("com.example." + className);
+
+            Method[] methods = c.getMethods();
+
+            for(Method m : methods){
+                
+                if(m.getName().equals(methodName)){
+
+
+                    //Check if parameter types of equal by extracting parameter types into ArrayList
+                    //then calling equals() to compay ArrayList with methodParams ArrayList
+
+                    Class<?>[] paramTypes = m.getParameterTypes();
+
+                    ArrayList<String> paramTypesArray = new ArrayList<String>();
+
+                    for(int x = 0;x < paramTypes.length;x++){
+
+                        paramTypesArray.add(paramTypes[x].getName());
+
+                    }
+
+                    if(paramTypesArray.equals(methodParams)){
+
+                        found = true;
+
+                    }
+
+                }
+
+            }
+
+            if(found){
+
+                return dynamicTest(testCaseName, () -> assertTrue(true));
+
+            }
+            else{
+
+                return dynamicTest(testCaseName, () -> assertTrue(false));
+
+            }
+                
+
+        } catch(ClassNotFoundException e){
+
+            return dynamicTest(testCaseName, () -> assertTrue(false));
+
+        }
     }
 
     @Override
