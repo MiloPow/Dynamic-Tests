@@ -70,7 +70,7 @@ public class MyTestFactory {
     }
 
     @TestFactory
-    public static List<DynamicTest> runTestFactory(AssignmentSpec aSpec) {
+    public static List<DynamicTest> testFactory(AssignmentSpec aSpec) {
 
 
         return aSpec.getDynamicTests();
@@ -139,37 +139,8 @@ public class MyTestFactory {
             else if(choice == 5){
 
                 // runAssignmentSpec(aSpec, scan);
-                
-                List<DynamicTest> myTests = runTestFactory(aSpec);
 
-                for(DynamicTest test : myTests){
-
-
-                    System.out.print("Test display name:");
-
-                    System.out.print(test.getDisplayName());
-
-                    try{
-
-                        test.getExecutable().execute();
-                        
-                        System.out.println(" -> Test Case passed!");
-
-                        // Class<?> c = test.getClass();
-
-                        // Calculator calc = new Calculator();
-
-                        // System.out.println("Class name: " + c.getName());
-
-                    } catch(Throwable t){
-
-                        System.out.println(" -> Test Case Failed!");
-
-                    }
-
-                }
-
-                promptAndClear(scan);
+                runTestFactory(aSpec, scan);
 
             }
 
@@ -633,6 +604,35 @@ public class MyTestFactory {
 
         promptAndClear(scan);
 
+    }
+
+    public static void runTestFactory(AssignmentSpec aSpec, Scanner scan){
+        clr();
+                
+        List<DynamicTest> myTests = testFactory(aSpec);
+
+        for(DynamicTest test : myTests){
+
+
+            System.out.print("Test Case: ");
+
+            System.out.print(test.getDisplayName() + "\nResult: ");
+
+            try{
+
+                test.getExecutable().execute();
+                
+                System.out.println(" Test Case passed!\n\n");
+
+            } catch(Throwable t){
+
+                System.out.println(" Test Case Failed!\n\n");
+
+            }
+
+        }
+
+        promptAndClear(scan);
     }
 
     public static void clr(){
