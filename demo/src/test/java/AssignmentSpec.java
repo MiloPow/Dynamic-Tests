@@ -1,12 +1,7 @@
-// package com.example;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import org.junit.jupiter.api.DynamicTest;
-import org.junit.Assert;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -59,14 +54,6 @@ public class AssignmentSpec {
     public void addTestCases(ArrayList<TestCase> t){
 
         testCases.addAll(t);
-
-    }
-
-    public void runTestCases(){
-
-        for(TestCase t : testCases){
-            t.run();
-        }
 
     }
 

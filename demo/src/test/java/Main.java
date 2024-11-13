@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
-public class MyTestFactory {
+public class Main {
 
     public static void main(String[] args) {
 
@@ -78,8 +78,6 @@ public class MyTestFactory {
 
             }
             else if(choice == 5){
-
-                // runAssignmentSpec(aSpec, scan);
 
                 runTestFactory(aSpec, scan);
 
@@ -533,17 +531,6 @@ public class MyTestFactory {
             
         
         }
-
-    }
-
-    public static void runAssignmentSpec(AssignmentSpec aSpec, Scanner scan){
-
-        clr();
-
-        // aSpec.runTestCases();
-        aSpec.runDynamicTests();
-
-        promptAndClear(scan);
 
     }
 
