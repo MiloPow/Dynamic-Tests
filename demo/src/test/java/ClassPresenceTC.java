@@ -64,7 +64,7 @@ public class ClassPresenceTC implements TestCase {
 
         try{
 
-            Class<?> c = Class.forName("com.example." + className);
+            Class<?> c = Class.forName("com.example.AssignmentFiles." + className);
 
             DynamicTest dt = dynamicTest(testCaseName, () -> assertTrue(true));
 
@@ -96,7 +96,7 @@ public class ClassPresenceTC implements TestCase {
 
         try{
 
-            Class<?> c = Class.forName("com.example." + className);
+            Class<?> c = Class.forName("com.example.AssignmentFiles." + className);
 
             return dynamicTest(testCaseName, () -> assertTrue(true));
 

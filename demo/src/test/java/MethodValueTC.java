@@ -235,7 +235,7 @@ public class MethodValueTC implements TestCase {
 
             //Get a reference to the class
         
-            Class<?> c = Class.forName("com.example." + className);
+            Class<?> c = Class.forName("com.example.AssignmentFiles." + className);
 
             //Get object so method can be invoked
 
@@ -336,7 +336,7 @@ public class MethodValueTC implements TestCase {
 
             //Get a reference to the class
         
-            Class<?> c = Class.forName("com.example." + className);
+            Class<?> c = Class.forName("com.example.AssignmentFiles." + className);
 
             //Get object so method can be invoked
 

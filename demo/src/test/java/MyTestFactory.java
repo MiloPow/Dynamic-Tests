@@ -567,7 +567,7 @@ public class MyTestFactory {
 
             } catch(Throwable t){
 
-                System.out.println(" Test Case Failed!\n\n");
+                System.out.println(" Test Case Failed! Error: " + t +"\n\n");
 
             }
 

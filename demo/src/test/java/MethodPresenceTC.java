@@ -128,7 +128,7 @@ public class MethodPresenceTC implements TestCase {
         
             Boolean found = false;
 
-            Class<?> c = Class.forName("com.example." + className);
+            Class<?> c = Class.forName("com.example.AssignmentFiles." + className);
 
             Method[] methods = c.getMethods();
 
@@ -211,7 +211,7 @@ public class MethodPresenceTC implements TestCase {
         
             Boolean found = false;
 
-            Class<?> c = Class.forName("com.example." + className);
+            Class<?> c = Class.forName("com.example.AssignmentFiles." + className);
 
             Method[] methods = c.getMethods();
 
