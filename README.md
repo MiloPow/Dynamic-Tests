@@ -1,31 +1,25 @@
-# Reworked project scope
-
-- The main folder does not need to contain the runner class. All code can be placed in the test folder
-
-  - This means that we can finally dynamically create and run tests
-  
-  - As a result, the appropriate changes were made
-  
-
 ## Changes made from last commit
 
-- Main.java was deleted. MyTestFactory.java (needs to be renamed) now acts as the runner class
+- MyTestFactory.java was renamed to Main.java
 
-- Added folder to com.example called "AssignmentFiles" to store files extracted from assignments
+- Removed "run" functions from test cases and ASpec as "runDynamicTest" is now used
 
-- Edited CPTC, MPTC, MVTC to adjust to Assignment File migration to new folder (com.example. -> com.example.AssignmentFiles)
  
 ## Next tasks
 
-- Remove "run" functions from test cases and ASpec as "runDynamicTest" is now used
-
-- Rename MyTestFactory appropriately
+- Consider making DynamicTest an attribute to all test cases
 
 - Consider renaming getDynamicTest functions for test cases and ASpec
+
+- Handle input (don't accept invalid input)
+
+- MVTC will cause an error if i try to test for a return value on a function that is void. It must be able to handle void functions
  
 - Fix deleting error (deleting a file that isn't empty doesn't work)
 
-- Revise project to determine anymore necessary changes before merging with main repositoy
+- Revise project to determine anymore necessary changes before merging with main repository
+    
+    - Keep SOLID principles in mind and determine if they are adhered to
 
 - **Merge program with main repository**
 
