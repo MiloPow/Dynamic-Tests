@@ -12,12 +12,12 @@ public class Main {
 
         createFile();
 
-        String filePath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\src\\test\\java\\MyDynamicTestFactory.java";
+        String filePath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\test\\java\\SimpleClass.java";
 
         boolean compilationResult = compileFile(filePath);
 
         if (compilationResult) {
-            runFile("MyDynamicTestFactory");
+            runFile("SimpleClass");
         } else {
             System.out.println("Compilation failed.");
         }
@@ -25,11 +25,11 @@ public class Main {
 
     public static void createFile(){
 
-        String className = "MyDynamicTestFactory";
+        String className = "SimpleClass";
 
-        String code = getCodeString();
+        String code = getSimpleCodeString();// getCodeString();
 
-        String folder = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\src\\test\\java";
+        String folder = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\src\\test\\java";
 
         try{
 
@@ -57,11 +57,11 @@ public class Main {
         if (compiler == null) return false;
 
         // Classpath for JUnit and compiled classes
-        String classpath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\target\\test-classes" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\target\\test-classes" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
+        String classpath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\target\\test-classes" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\target\\test-classes" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
 
         int compilationResult = compiler.run(null, null, null, "-classpath", classpath, filePath);
 
@@ -69,14 +69,14 @@ public class Main {
     }
 
     public static void runFile(String className) {
-        String classpath = "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\target\\test-classes" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\target\\test-classes" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
-                           File.pathSeparator + "C:\\Users\\Anwar\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
+        String classpath = "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\target\\test-classes" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\target\\test-classes" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\jupiter\\junit-jupiter-api\\5.7.1\\junit-jupiter-api-5.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\junit\\platform\\junit-platform-commons\\1.7.1\\junit-platform-commons-1.7.1.jar" +
+                           File.pathSeparator + "C:\\Users\\SHAHZAD\\.m2\\repository\\org\\apiguardian\\apiguardian-api\\1.1.0\\apiguardian-api-1.1.0.jar";
 
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-classpath", classpath, className);
-        processBuilder.directory(new File("C:\\Users\\Anwar\\Documents\\UWI\\COMP 3607\\Group Project\\Dynamic-Tests\\demo\\target\\test-classes"));
+        processBuilder.directory(new File("C:\\Users\\SHAHZAD\\Documents\\UWI\\COMP3607\\Dynamic-Tests\\demo\\target\\test-classes"));
 
         try {
             Process p = processBuilder.start();
@@ -91,6 +91,25 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public static String getSimpleCodeString(){
+
+        return """
+                import static org.junit.Assert.assertTrue;
+
+                public class SimpleClass{
+                
+                    public static void main(String[] args){
+                    
+                        System.out.println("This is a simple class for debugging.");
+                    
+                    }
+
+                }
+                """;
+
+
     }
 
     public static String getCodeString(){
